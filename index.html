@@ -6,26 +6,32 @@
     </header>
     <body>
         <h1 id="game-title">Welcome to RPS!</h1>
-        <div id="main">
-            <div id="platform">
-                <div id="player" class="move-space">
+        <div id="platform">
+            <div id="player" class="move-space">
+                <div>
                     <img id="player-selection" class="center" src="images/rock-left.png">
                 </div>
-                <p>vs</p>
-                <div id="computer" class="move-space">
-                    <img id="computer-selection" class="center" src="images/rock-right.png">
+                <div class="result-panel">
+                    <h3 id="player-score">0</h3>
                 </div>
             </div>
-            <div id="player-moves">
-                <button id='rock-btn'>Rock</button>
-                <button id='paper-btn'>Paper</button>
-                <button id='scissors-btn'>Scissors</button>
+            <p>vs</p>
+            <div id="computer" class="move-space">
+                <div>
+                    <img id="computer-selection" class="center" src="images/rock-right.png">
+                </div>
+                <div class="result-panel">
+                    <h3 id="computer-score">0</h3>
+                </div>
             </div>
-            <div id="result-panel">
-                <h3 id="player-score">Player Score: 0</h3>
-                <h3 id="computer-score">Computer Score: 0</h3>
-                <h2 id="winner-of-the-game"></h2>
-            </div>
+        </div>
+        <div id="player-moves">
+            <button id='rock-btn'>Rock</button>
+            <button id='paper-btn'>Paper</button>
+            <button id='scissors-btn'>Scissors</button>
+        </div>
+        <div>
+            <h2 id="winner-of-the-game"></h2>
         </div>
     </body>
     <footer>

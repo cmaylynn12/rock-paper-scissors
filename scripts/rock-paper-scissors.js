@@ -91,10 +91,10 @@ function game() {
 
             if (roundWinner === 'player') {
                 playerPoints++;
-                playerScore.innerText = `Player Score: ${playerPoints}`;
+                playerScore.innerText = playerPoints;
             } else if (roundWinner === 'computer') {
                 computerPoints++;
-                computerScore.innerText = `Computer Score: ${computerPoints}`;
+                computerScore.innerText = computerPoints;
             }
 
         } 
