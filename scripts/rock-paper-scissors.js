@@ -68,6 +68,10 @@ function game() {
 
             if (playerPoints === 5 || computerPoints === 5) {
                 
+                buttons.forEach((button) => {
+                    button.disabled = true;
+                })
+
                 if (playerPoints > computerPoints) {
                     gameWinner.innerText = 'You won this game!';
                 } else {
@@ -75,9 +79,6 @@ function game() {
                 }
                 
             }
-
-            // console.log(`Player: ${playerPoints}`);
-            // console.log(`Computer: ${computerPoints}`);
         })
     })
 }
