@@ -35,31 +35,6 @@ function playRound(playerMove, computerMove) {
 }
 
 function game() {
-    // let rounds = 5;
-    // let playerPoints = 0;
-    // let computerPoints = 0;
-    
-    // for (let i = 1; i <= rounds; i++) {
-    //     playerMove = prompt("Please enter a move: ");
-    //     computerMove = computerPlay();
-
-    //     winner = playRound(playerMove, computerMove);
-    //     console.log(winner);
-
-    //     if (winner === 'player') {
-    //         playerPoints++;
-    //     } else if (winner === 'computer') {
-    //         computerPoints++;
-    //     }
-    // }
-
-    // if (playerPoints > computerPoints) {
-    //     console.log('The winner of this game is Player!');
-    // } else if (playerPoints < computerPoints) {
-    //     console.log('The winner of this game is Computer!');
-    // } else {
-    //     console.log(`${playerPoints} and ${computerPoints} makes it a tie!`)
-    // }
 
     const buttons = document.querySelectorAll('button');
     
@@ -68,35 +43,10 @@ function game() {
 
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            let playerMove = button.innerText;
-            let computerMove = computerPlay();
-
-            let game_winner;
-
-            let winner = playRound(playerMove, computerMove);
-
-            const score = document.querySelector('#winner');
-            score.innerText = winner;
 
             let playerScore = document.querySelector('#player-score');
             let computerScore = document.querySelector('#computer-score');
             let gameWinner = document.querySelector('#winner-of-the-game');
-
-            // if (playerPoints === 5) {
-            //     console.log('player has wonnnnnn');
-
-            // } else if(computerPoints === 5) {
-            //     console.log('computer has wonnnnnn');
-            // }
-
-            // if (winner === 'player') {
-            //     playerPoints ++;
-            //     player_score.innerText = `Player Score: ${playerPoints}`;
-
-            // } else if (winner === 'computer') {
-            //     computerPoints ++;
-            //     computer_score.innerText = `Computer Score: ${computerPoints}`;
-            // }
 
             if (playerPoints < 5 && computerPoints < 5) {
 
