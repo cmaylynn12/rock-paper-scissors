@@ -40,48 +40,86 @@ function game() {
     
     let playerPoints = 0;
     let computerPoints = 0;
+    let playerCurrentMove = "";
 
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
-
             
-            let playerScore = document.querySelector('#player-score');
-            let computerScore = document.querySelector('#computer-score');
-            let gameWinner = document.querySelector('#winner-of-the-game');
+            playerCurrentMove = button.innerText;
 
-            if (playerPoints < 5 && computerPoints < 5) {
+            let playerMoveImage = document.querySelector('#player-selection');
+            playerMoveImage.classList.add('player-prepare');
+            
+            //Ensures starting image is always 'rock'
+            playerMoveImage.src="images/rock-left.png"
 
-                let playerMove = button.innerText;
-                let computerMove = computerPlay();
+            let computerMoveImage = document.querySelector('#computer-selection');
+            computerMoveImage.classList.add('computer-prepare');
 
-                let roundWinner = playRound(playerMove, computerMove);
-                console.log(roundWinner);
-
-                if (roundWinner === 'player') {
-                    playerPoints++;
-                    playerScore.innerText = `Player Score: ${playerPoints}`;
-                } else if (roundWinner === 'computer') {
-                    computerPoints++;
-                    computerScore.innerText = `Computer Score: ${computerPoints}`;
-                }
-
-            } 
-
-            if (playerPoints === 5 || computerPoints === 5) {
-                
-                buttons.forEach((button) => {
-                    button.disabled = true;
-                })
-
-                if (playerPoints > computerPoints) {
-                    gameWinner.innerText = 'You won this game!';
-                } else {
-                    gameWinner.innerText = 'Computer won this game. :('
-                }
-                
-            }
+            computerMoveImage.src="images/rock-right.png"
         })
     })
+
+    function removeTransition(e) {  
+
+        let playerMove = playerCurrentMove;
+        let computerMove = computerPlay();
+
+        console.log(playerMove);
+        console.log(computerMove);
+
+        //Getting the img of player's selection
+        let playerSelection = document.querySelector('#player-selection');
+        let computerSelection = document.querySelector('#computer-selection');
+
+        playerSelection.src = `images/${playerCurrentMove.toLowerCase()}-left.png`;
+        playerSelection.style['transform'] = "rotate(90deg)";
+        playerSelection.classList.remove('player-prepare');
+
+        computerSelection.src = `images/${computerMove.toLowerCase()}-right.png`;
+        computerSelection.style['transform'] = "rotate(-90deg)";
+        computerSelection.classList.remove('computer-prepare');
+
+        let playerScore = document.querySelector('#player-score');
+        let computerScore = document.querySelector('#computer-score');
+        let gameWinner = document.querySelector('#winner-of-the-game');
+
+        if (playerPoints < 5 && computerPoints < 5) {
+
+            let roundWinner = playRound(playerMove, computerMove);
+            console.log(roundWinner);
+
+            if (roundWinner === 'player') {
+                playerPoints++;
+                playerScore.innerText = `Player Score: ${playerPoints}`;
+            } else if (roundWinner === 'computer') {
+                computerPoints++;
+                computerScore.innerText = `Computer Score: ${computerPoints}`;
+            }
+
+        } 
+
+        const buttons = document.querySelectorAll('button');
+
+        if (playerPoints === 5 || computerPoints === 5) {
+                
+            buttons.forEach((button) => {
+                button.disabled = true;
+            })
+
+            if (playerPoints > computerPoints) {
+                gameWinner.innerText = 'You won this game!';
+            } else {
+                gameWinner.innerText = 'Computer won this game. :('
+            }
+                
+        }
+
+    }
+
+    const shoot = document.querySelector('#player-selection');
+    shoot.addEventListener('animationend', removeTransition);
+
 }
 
 game();

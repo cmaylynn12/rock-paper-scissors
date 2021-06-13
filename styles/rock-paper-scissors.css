@@ -52,3 +52,30 @@ button:hover {
     justify-content: space-evenly;
     margin-top: 25px;
 }
+
+.player-prepare {
+    animation: rock-paper-scissors-shoot 1s;
+
+}
+
+@keyframes rock-paper-scissors-shoot {
+    0% {transform: rotate(0deg);}
+    20% {transform: rotate(90deg);}
+    40% {transform: rotate(0deg);}
+    60% {transform: rotate(90deg);}
+    80% {transform: rotate(0deg);}
+    100% {transform: rotate(85deg);}
+}
+
+.computer-prepare {
+    animation: randomising 1s;
+}
+
+@keyframes randomising {
+    0% {transform: rotate(0deg);}
+    20% {transform: rotate(-90deg);}
+    40% {transform: rotate(0deg);}
+    60% {transform: rotate(-90deg);}
+    80% {transform: rotate(0deg);}
+    100% {transform: rotate(-85deg);}
+}
