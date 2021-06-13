@@ -32,7 +32,7 @@ function playRound(playerMove, computerMove) {
     }
 
     console.log(message)
-    return winner;
+    return message;
 }
 
 function game() {
