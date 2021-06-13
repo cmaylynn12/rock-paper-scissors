@@ -71,6 +71,9 @@ function game() {
 
             let winner = playRound(playerMove, computerMove);
             console.log(winner);
+
+            const score = document.querySelector('#winner');
+                score.innerText = winner;
         })
     })
 }
