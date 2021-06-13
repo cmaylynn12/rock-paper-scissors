@@ -36,29 +36,43 @@ function playRound(playerMove, computerMove) {
 }
 
 function game() {
-    let rounds = 5;
-    let playerPoints = 0;
-    let computerPoints = 0;
+    // let rounds = 5;
+    // let playerPoints = 0;
+    // let computerPoints = 0;
     
-    for (let i = 1; i <= rounds; i++) {
-        playerMove = prompt("Please enter a move: ");
-        computerMove = computerPlay();
+    // for (let i = 1; i <= rounds; i++) {
+    //     playerMove = prompt("Please enter a move: ");
+    //     computerMove = computerPlay();
 
-        winner = playRound(playerMove, computerMove);
-        console.log(winner);
+    //     winner = playRound(playerMove, computerMove);
+    //     console.log(winner);
 
-        if (winner === 'player') {
-            playerPoints++;
-        } else if (winner === 'computer') {
-            computerPoints++;
-        }
-    }
+    //     if (winner === 'player') {
+    //         playerPoints++;
+    //     } else if (winner === 'computer') {
+    //         computerPoints++;
+    //     }
+    // }
 
-    if (playerPoints > computerPoints) {
-        console.log('The winner of this game is Player!');
-    } else if (playerPoints < computerPoints) {
-        console.log('The winner of this game is Computer!');
-    } else {
-        console.log(`${playerPoints} and ${computerPoints} makes it a tie!`)
-    }
+    // if (playerPoints > computerPoints) {
+    //     console.log('The winner of this game is Player!');
+    // } else if (playerPoints < computerPoints) {
+    //     console.log('The winner of this game is Computer!');
+    // } else {
+    //     console.log(`${playerPoints} and ${computerPoints} makes it a tie!`)
+    // }
+
+    const buttons = document.querySelectorAll('button');
+    
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            let playerMove = button.innerText;
+            let computerMove = computerPlay();
+
+            let winner = playRound(playerMove, computerMove);
+            console.log(winner);
+        })
+    })
 }
+
+game();
