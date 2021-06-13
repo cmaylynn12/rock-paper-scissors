@@ -44,6 +44,7 @@ function game() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
 
+            
             let playerScore = document.querySelector('#player-score');
             let computerScore = document.querySelector('#computer-score');
             let gameWinner = document.querySelector('#winner-of-the-game');

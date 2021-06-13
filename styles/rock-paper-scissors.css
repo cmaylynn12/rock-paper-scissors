@@ -1,0 +1,54 @@
+body {
+    background-color: rgb(241, 191, 215);
+}
+
+button {
+    background-color: green;
+    border-style: none;
+    height: 50px;
+    width: 100px;
+}
+
+button:hover {
+    box-shadow: .5px .5px red;
+}
+
+#game-title {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#platform {
+    display: flex;
+    margin-top: 20px;
+    background-color: chartreuse;
+    justify-content: space-between;
+}
+
+.move-space {
+    display: flex;
+    width: 40%;
+    margin: 10px;
+}
+
+#player {
+    background-color: crimson;
+}
+
+#computer {
+    background-color: darkcyan;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#player-moves {
+    background-color: darkolivegreen;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 25px;
+}
