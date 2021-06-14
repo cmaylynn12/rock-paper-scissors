@@ -36,24 +36,28 @@ function playRound(playerMove, computerMove) {
 
 function game() {
 
-    const buttons = document.querySelectorAll('button');
+    const buttons = document.querySelectorAll('.move-btn');
     
     let playerPoints = 0;
     let computerPoints = 0;
+    let playerScore = document.querySelector('#player-score');
+    let computerScore = document.querySelector('#computer-score');
     let playerCurrentMove = "";
+
+    let playerMoveImage = document.querySelector('#player-selection');
+    let computerMoveImage = document.querySelector('#computer-selection');
+    let gameWinner = document.querySelector('#winner-of-the-game');
 
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             
             playerCurrentMove = button.innerText;
 
-            let playerMoveImage = document.querySelector('#player-selection');
             playerMoveImage.classList.add('player-prepare');
             
             //Ensures starting image is always 'rock'
             playerMoveImage.src="images/rock-left.png"
 
-            let computerMoveImage = document.querySelector('#computer-selection');
             computerMoveImage.classList.add('computer-prepare');
 
             computerMoveImage.src="images/rock-right.png"
@@ -80,10 +84,6 @@ function game() {
         computerSelection.style['transform'] = "rotate(-90deg)";
         computerSelection.classList.remove('computer-prepare');
 
-        let playerScore = document.querySelector('#player-score');
-        let computerScore = document.querySelector('#computer-score');
-        let gameWinner = document.querySelector('#winner-of-the-game');
-
         if (playerPoints < 5 && computerPoints < 5) {
 
             let roundWinner = playRound(playerMove, computerMove);
@@ -99,12 +99,13 @@ function game() {
 
         } 
 
-        const buttons = document.querySelectorAll('button');
+        const replayButton = document.querySelector('#replay-btn');
+        const buttons = document.querySelectorAll('.move-btn');
 
         if (playerPoints === 5 || computerPoints === 5) {
                 
             buttons.forEach((button) => {
-                button.disabled = true;
+                button.hidden = true;
             })
 
             if (playerPoints > computerPoints) {
@@ -112,13 +113,41 @@ function game() {
             } else {
                 gameWinner.innerText = 'Computer won this game. :('
             }
-                
+            
+            replayButton.hidden = false;
         }
 
     }
 
+    function reset() {
+
+        console.log('restarting...')
+        playerPoints = 0;
+        computerPoints = 0;
+
+        playerScore.innerText = playerPoints;
+        computerScore.innerText = computerPoints;
+        
+        replayButton.hidden = true;
+
+        buttons.forEach((button) => {
+            button.hidden = false;
+        })
+
+        playerMoveImage.src = "images/rock-left.png";
+        playerMoveImage.style['transform'] = "rotate(0deg)";
+        computerMoveImage.src = "images/rock-right.png";
+        computerMoveImage.style['transform'] = "rotate(0deg)";
+
+        gameWinner.innerHTML = "";
+        
+    }
+
     const shoot = document.querySelector('#player-selection');
     shoot.addEventListener('animationend', removeTransition);
+
+    const replayButton = document.querySelector('#replay-btn');
+    replayButton.addEventListener('click', reset);
 
 }
 

@@ -52,9 +52,14 @@ button:hover {
     margin-top: 25px;
 }
 
+#replay-panel {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5px;
+}
+
 .player-prepare {
     animation: rock-paper-scissors-shoot 1s;
-
 }
 
 @keyframes rock-paper-scissors-shoot {
